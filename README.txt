@@ -7,5 +7,5 @@ Requires Risugami's ModLoader
 
 Released under a CC-BY-NC-SA license, for more information please visit creativecommons.org/licenses/by-nc-sa/3.0/
 
-For regular users, use the TorchLevers/release/ folder, and download it as a .ZIP, then throw it in your %APPDATA%/.minecraft/mods folder
-For modders, the source files are available under TorchLevers/source/ (of course). Please abide by the terms of the license.
+For regular users, you're in the wrong place. Please visit ajax.host-ed.me/mods/
+For modders, the source files are available right here, unobfuscated and ready to be plugged into MCP. Please abide by the terms of the license.
