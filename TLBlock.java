@@ -140,7 +140,6 @@ public class TLBlock extends Block {
 
         this.dropTorchIfCantStay(par1World, par2, par3, par4);
     }
-<<<<<<< HEAD
     /**
      * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
      * their own) Args: x, y, z, neighbor blockID
@@ -184,8 +183,6 @@ public class TLBlock extends Block {
             }
         }
     }
-=======
->>>>>>> origin/Beta
     /**
      * Tests if the block can remain at its current location and will drop as an item if it is unable to stay. Returns
      * True if it can stay and False if it drops. Args: world, x, y, z
@@ -373,7 +370,6 @@ public class TLBlock extends Block {
             return true;
         }
     }
-<<<<<<< HEAD
     /**
      * ejects contained items into the world, and notifies neighbours of an update, as appropriate
      */
@@ -415,8 +411,6 @@ public class TLBlock extends Block {
 
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
-=======
->>>>>>> origin/Beta
     /**
      * Can this block provide power. Only wire currently seems to have this change based on its state.
      */
