@@ -1,5 +1,4 @@
 package net.minecraft.src;
-
 public class mod_TorchLevers extends BaseMod
 {
 	public static int blockid = 160;
@@ -13,8 +12,7 @@ public class mod_TorchLevers extends BaseMod
 		ModLoader.addName(TLitem, "TorchLever");
 		ModLoader.addRecipe(new ItemStack(TLitem, 1), new Object [] {"#", Character.valueOf('#'), Block.dirt});
 		ModLoader.addRecipe(new ItemStack(TLblock, 1), new Object [] {"#",Character.valueOf('#'), TLitem});
-		TLitem.iconIndex = ModLoader.addOverride("/gui/items.png", "/ajax/torchlevers/tlitem.png");
-		ModLoader.addOverride(null, null);
+		TLitem.iconIndex = ModLoader.addOverride("/gui/items.png", "/ajax/torchlevers/TLItem.png");
 	}
 	@Override
 	public String getVersion()

@@ -13,7 +13,6 @@ public class TLBlock extends Block {
     {
     	return mod_TorchLevers.TLitem.shiftedIndex;
     }
-    
 //copypasta start
     /**
      * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
@@ -23,7 +22,6 @@ public class TLBlock extends Block {
     {
         return null;
     }
-
     /**
      * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
      * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
@@ -32,7 +30,6 @@ public class TLBlock extends Block {
     {
         return false;
     }
-
     /**
      * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
      */
@@ -40,7 +37,6 @@ public class TLBlock extends Block {
     {
         return false;
     }
-
     /**
      * The type of render function that is called for this block
      */
@@ -48,7 +44,6 @@ public class TLBlock extends Block {
     {
         return 2;
     }
-
     /**
      * Gets if we can place a torch on a block.
      */
@@ -64,7 +59,6 @@ public class TLBlock extends Block {
             return var5 == Block.fence.blockID || var5 == Block.netherFence.blockID || var5 == Block.glass.blockID;
         }
     }
-
     /**
      * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
      */
@@ -72,7 +66,6 @@ public class TLBlock extends Block {
     {
         return par1World.isBlockNormalCubeDefault(par2 - 1, par3, par4, true) ? true : (par1World.isBlockNormalCubeDefault(par2 + 1, par3, par4, true) ? true : (par1World.isBlockNormalCubeDefault(par2, par3, par4 - 1, true) ? true : (par1World.isBlockNormalCubeDefault(par2, par3, par4 + 1, true) ? true : this.canPlaceTorchOn(par1World, par2, par3 - 1, par4))));
     }
-
     /**
      * called before onBlockPlacedBy by ItemBlock and ItemReed
      */
@@ -107,7 +100,6 @@ public class TLBlock extends Block {
 
         par1World.setBlockMetadataWithNotify(par2, par3, par4, var9);
     }
-
     /**
      * Ticks the block if it's been scheduled
      */
@@ -120,7 +112,6 @@ public class TLBlock extends Block {
             this.onBlockAdded(par1World, par2, par3, par4);
         }
     }
-
     /**
      * Called whenever the block is added into the world. Args: world, x, y, z
      */
@@ -149,7 +140,7 @@ public class TLBlock extends Block {
 
         this.dropTorchIfCantStay(par1World, par2, par3, par4);
     }
-
+<<<<<<< HEAD
     /**
      * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
      * their own) Args: x, y, z, neighbor blockID
@@ -193,7 +184,8 @@ public class TLBlock extends Block {
             }
         }
     }
-
+=======
+>>>>>>> origin/Beta
     /**
      * Tests if the block can remain at its current location and will drop as an item if it is unable to stay. Returns
      * True if it can stay and False if it drops. Args: world, x, y, z
@@ -215,7 +207,6 @@ public class TLBlock extends Block {
             return true;
         }
     }
-
     /**
      * Ray traces through the blocks collision from start vector to end vector returning a ray trace hit. Args: world,
      * x, y, z, startVec, endVec
@@ -248,8 +239,7 @@ public class TLBlock extends Block {
         }
 
         return super.collisionRayTrace(par1World, par2, par3, par4, par5Vec3, par6Vec3);
-    }
-    
+    }   
     /**
      * Is this block powering the block on the specified side
      */
@@ -257,7 +247,6 @@ public class TLBlock extends Block {
     {
         return (par1IBlockAccess.getBlockMetadata(par2, par3, par4) & 8) > 0;
     }
-
     /**
      * Is this block indirectly powering the block on the specified side
      */
@@ -275,20 +264,15 @@ public class TLBlock extends Block {
             return var7 == 0 && par5 == 0 ? true : (var7 == 7 && par5 == 0 ? true : (var7 == 6 && par5 == 1 ? true : (var7 == 5 && par5 == 1 ? true : (var7 == 4 && par5 == 2 ? true : (var7 == 3 && par5 == 3 ? true : (var7 == 2 && par5 == 4 ? true : var7 == 1 && par5 == 5))))));
         }
     }
-    
     //copypasta end
     /*
      * Returns true if the block at x,y,z is providing power, false otherwise.
-     * I have no idea how to make this work. :/
-     * Halp?
      */
     public boolean amIPowering(World world, int x, int y, int z)
     {
-    	//one or four?
     	return isIndirectlyPoweringTo(world, x, y, z, 1) || isIndirectlyPoweringTo(world, x, y, z, 4);
     }
     //copypasta start
-    
     /*
      * A randomly called display update to be able to add particles or other items for display
      */
@@ -340,7 +324,6 @@ public class TLBlock extends Block {
     {
         this.onBlockActivated(par1World, par2, par3, par4, par5EntityPlayer, 0, 0.0F, 0.0F, 0.0F);
     }
-
     /**
      * Called upon block activation (right click on the block.)
      */
@@ -390,7 +373,7 @@ public class TLBlock extends Block {
             return true;
         }
     }
-
+<<<<<<< HEAD
     /**
      * ejects contained items into the world, and notifies neighbours of an update, as appropriate
      */
@@ -432,7 +415,8 @@ public class TLBlock extends Block {
 
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
-
+=======
+>>>>>>> origin/Beta
     /**
      * Can this block provide power. Only wire currently seems to have this change based on its state.
      */
