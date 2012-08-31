@@ -13,6 +13,66 @@ public class TLBlock extends Block {
     {
     	return mod_TorchLevers.TLitem.shiftedIndex;
     }
+//psuedocode start
+//    public void update(int x, int y, int z, World world)
+//    {
+//    	metadata = world.getMetadata(x,y,z)
+//    	if (metadata includes 1)
+//    	{
+//    		renderAsAttachedToTop
+//    	}
+//    	elseif (metadata includes 2)
+//    	{
+//    		renderAsAttachedToNorth
+//    	}
+//    	elseif (metadata includes 3)
+//    	{
+//    		renderAsAttachedToEast
+//    	}
+//    	elseif (metadata includes 4)
+//    	{
+//    		renderAsAttachedToSouth
+//    	}
+//    	elseif (metadata includes 5)
+//    	{
+//    		renderAsAttachedToWest
+//    	}
+//    	if (metadata includes 8)
+//    	{
+//    		redstoneOutput = true
+//    	}
+//    	else
+//    	{
+//    		redstoneOutput = false
+//    	}
+//    }
+//    public void place(int x, int y, int z, World world)
+//    {
+//    	metadata = null
+//    	if (isPlacedOnTop)
+//    	{
+//    		metadata = 1
+//    	}
+//    	elseif (isPlacedOnNorth)
+//    	{
+//    		metadata = 2
+//    	}
+//    	elseif (isPlacedOnEast)
+//    	{
+//    		metadata = 3
+//    	}
+//    	elseif (isPlacedOnSouth)
+//    	{
+//    		metadata = 4
+//    	}
+//    	elseif (isPlacedOnWest)
+//    	{
+//    		metadata = 5
+//    	}
+//    	world.setMetadata(x,y,z,metadata)
+//    
+//    }
+//psuedocode end
 //copypasta start
     /**
      * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
@@ -139,49 +199,6 @@ public class TLBlock extends Block {
         }
 
         this.dropTorchIfCantStay(par1World, par2, par3, par4);
-    }
-    /**
-     * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
-     * their own) Args: x, y, z, neighbor blockID
-     */
-    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)
-    {
-        if (this.dropTorchIfCantStay(par1World, par2, par3, par4))
-        {
-            int var6 = par1World.getBlockMetadata(par2, par3, par4);
-            boolean var7 = false;
-
-            if (!par1World.isBlockNormalCubeDefault(par2 - 1, par3, par4, true) && var6 == 1)
-            {
-                var7 = true;
-            }
-
-            if (!par1World.isBlockNormalCubeDefault(par2 + 1, par3, par4, true) && var6 == 2)
-            {
-                var7 = true;
-            }
-
-            if (!par1World.isBlockNormalCubeDefault(par2, par3, par4 - 1, true) && var6 == 3)
-            {
-                var7 = true;
-            }
-
-            if (!par1World.isBlockNormalCubeDefault(par2, par3, par4 + 1, true) && var6 == 4)
-            {
-                var7 = true;
-            }
-
-            if (!this.canPlaceTorchOn(par1World, par2, par3 - 1, par4) && var6 == 5)
-            {
-                var7 = true;
-            }
-
-            if (var7)
-            {
-                this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
-                par1World.setBlockWithNotify(par2, par3, par4, 0);
-            }
-        }
     }
     /**
      * Tests if the block can remain at its current location and will drop as an item if it is unable to stay. Returns
@@ -369,47 +386,6 @@ public class TLBlock extends Block {
             }
             return true;
         }
-    }
-    /**
-     * ejects contained items into the world, and notifies neighbours of an update, as appropriate
-     */
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
-    {
-        if ((par6 & 8) > 0)
-        {
-            par1World.notifyBlocksOfNeighborChange(par2, par3, par4, this.blockID);
-            int var7 = par6 & 7;
-
-            if (var7 == 1)
-            {
-                par1World.notifyBlocksOfNeighborChange(par2 - 1, par3, par4, this.blockID);
-            }
-            else if (var7 == 2)
-            {
-                par1World.notifyBlocksOfNeighborChange(par2 + 1, par3, par4, this.blockID);
-            }
-            else if (var7 == 3)
-            {
-                par1World.notifyBlocksOfNeighborChange(par2, par3, par4 - 1, this.blockID);
-            }
-            else if (var7 == 4)
-            {
-                par1World.notifyBlocksOfNeighborChange(par2, par3, par4 + 1, this.blockID);
-            }
-            else if (var7 != 5 && var7 != 6)
-            {
-                if (var7 == 0 || var7 == 7)
-                {
-                    par1World.notifyBlocksOfNeighborChange(par2, par3 + 1, par4, this.blockID);
-                }
-            }
-            else
-            {
-                par1World.notifyBlocksOfNeighborChange(par2, par3 - 1, par4, this.blockID);
-            }
-        }
-
-        super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
     /**
      * Can this block provide power. Only wire currently seems to have this change based on its state.

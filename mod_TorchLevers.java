@@ -7,7 +7,7 @@ public class mod_TorchLevers extends BaseMod
 	public static Item TLitem = new TLItem(itemid).setItemName("TorchLeverItem");
 	public void load()
 	{
-		ModLoader.addName(TLblock,  "TorchLever Block (you should never have this)");
+		ModLoader.addName(TLblock,  "TorchLever Block (you should not have this)");
 		ModLoader.registerBlock(TLblock);
 		ModLoader.addName(TLitem, "TorchLever");
 		ModLoader.addRecipe(new ItemStack(TLitem, 1), new Object [] {"#", Character.valueOf('#'), Block.dirt});
